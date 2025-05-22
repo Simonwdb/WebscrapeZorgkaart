@@ -47,9 +47,12 @@ class Webscrape:
             return None
         
         soup = bs4.BeautifulSoup(response.content, 'lxml')
-        filter_results = soup.find('div', class_='filter-results')
-        result = filter_results.find_all('div', class_='filter-result')
-        return result
+        results_container = soup.find('div', class_='filter-results')
+        
+        if not results_container:
+            return None
+
+        return results_container.find_all('div', class_='filter-result')
     
     def get_filter_links(self, results: List[bs4.element.Tag]) -> Dict[str, str]:
         result_dict: Dict[str, str] = {}
