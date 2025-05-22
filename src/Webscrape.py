@@ -16,6 +16,21 @@ class Webscrape:
             )
         }
     
+    def get_page_total(self, facility: str) -> Union[int, None]:
+        temp_url: str = f'{self.base_url}/{facility.lower()}'
+        response = requests.get(url=temp_url, headers=self.headers)
+
+        if response.status_code != 200:
+            return None
+        
+        soup = bs4.BeautifulSoup(response.content, 'lxml')
+        uls = soup.find('ul', class_='pagination justify-content-center')
+        links = uls.find_all('a', class_='page-link')
+        result = links[-1]
+        int_result = int(result.get_text(strip=True))
+        return int_result
+
+    
     def get_filter_result(self, facility: str, page_id: int = 1) -> Union[List[bs4.element.Tag], None]:
         temp_url: str = f'{self.base_url}/{facility.lower()}/pagina{page_id}'
         response = requests.get(url=temp_url, headers=self.headers)
