@@ -2,6 +2,7 @@ import time
 import requests
 import bs4
 import re
+import json
 
 from typing import Dict, List, Union, Tuple, Optional
 
@@ -68,3 +69,29 @@ class Webscrape:
             return street, number, addition
         else:
             return full_address, None, None
+    
+    def get_facility_info(self, facility_url: str) -> Union[Dict[str, str], None]:
+        response = requests.get(url=facility_url, headers=self.headers)
+
+        if response.status_code != 200:
+            return None
+        
+        soup = bs4.BeautifulSoup(response.content, 'html.parser')
+        script = soup.find('script', type='application/ld+json')
+        data = json.loads(script.string)
+        address = data.get('address')
+        place = address.get('addressLocality')
+        postal_code = address.get('postalCode')
+        street_address = address.get('streetAddress')
+        address_split = self.split_address(full_address=street_address)
+        result = {
+            'plaats': place,
+            'postcode': postal_code,
+            'straat': address_split[0],
+            'huisnummer': address_split[1],
+            'toevoeging': address_split[2]
+        }
+
+        return result
+
+
