@@ -16,8 +16,8 @@ class Webscrape:
             )
         }
     
-    def get_filter_result(self, facility: str) -> Union[List[bs4.element.Tag], None]:
-        temp_url: str = f'{self.base_url}/{facility.lower()}'
+    def get_filter_result(self, facility: str, page_id: int = 1) -> Union[List[bs4.element.Tag], None]:
+        temp_url: str = f'{self.base_url}/{facility.lower()}/pagina{page_id}'
         response = requests.get(url=temp_url, headers=self.headers)
 
         if response.status_code != 200:
