@@ -1,1 +1,2 @@
 src/*.ipynb
+src/__pycache__/

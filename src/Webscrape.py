@@ -23,4 +23,7 @@ class Webscrape:
         if response.status_code != 200:
             return None
         
-        
+        soup = bs4.BeautifulSoup(response.content, 'lxml')
+        filter_results = soup.find('div', class_='filter-results')
+        result = filter_results.find_all('div', class_='filter-result')
+        return result
