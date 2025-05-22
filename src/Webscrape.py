@@ -4,6 +4,7 @@ import bs4
 import re
 import json
 
+from Facility import Facility
 from typing import Dict, List, Union, Tuple, Optional
 
 
@@ -26,11 +27,16 @@ class Webscrape:
             return None
         
         soup = bs4.BeautifulSoup(response.content, 'lxml')
-        uls = soup.find('ul', class_='pagination justify-content-center')
-        links = uls.find_all('a', class_='page-link')
-        result = links[-1]
-        int_result = int(result.get_text(strip=True))
-        return int_result
+        pagination = soup.find('ul', class_='pagination justify-content-center')
+
+        if not pagination:
+            return 1
+
+        links = pagination.find_all('a', class_='page-link')
+        try:
+            return int(links[-1].get_text(strip=True))
+        except (IndexError, ValueError):
+            return None
 
     
     def get_filter_result(self, facility: str, page_id: int = 1) -> Union[List[bs4.element.Tag], None]:
@@ -90,7 +96,7 @@ class Webscrape:
             return None
 
         address_split = self.split_address(full_address=street_address)
-        
+
         result = {
             'plaats': address.get('addressLocality'),
             'postcode': address.get('postalCode', '').replace(' ', ''),
