@@ -78,15 +78,22 @@ class Webscrape:
         
         soup = bs4.BeautifulSoup(response.content, 'html.parser')
         script = soup.find('script', type='application/ld+json')
+
+        if script is None or not script.string:
+            return None
+
         data = json.loads(script.string)
         address = data.get('address')
-        place = address.get('addressLocality')
-        postal_code = address.get('postalCode').replace(' ', '')
         street_address = address.get('streetAddress')
+
+        if not street_address:
+            return None
+
         address_split = self.split_address(full_address=street_address)
+        
         result = {
-            'plaats': place,
-            'postcode': postal_code,
+            'plaats': address.get('addressLocality'),
+            'postcode': address.get('postalCode', '').replace(' ', ''),
             'straat': address_split[0],
             'huisnummer': address_split[1],
             'toevoeging': address_split[2]
