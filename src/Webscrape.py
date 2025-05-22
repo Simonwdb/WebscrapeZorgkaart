@@ -72,14 +72,14 @@ class Webscrape:
 
     @staticmethod
     def split_address(full_address: str) -> Tuple[str, Optional[str], Optional[str]]:
-        match = re.match(r'^(.+?)\s(\d+)\s?([a-zA-Z]*)$', full_address.strip())
+        match = re.match(r'^(.*?)\s(\d+)\s*(.*)$', full_address.strip())
         if match:
-            street: str = match.group(1)
-            number: str = match.group(2)
-            addition: Optional[str] = match.group(3) if match.group(3) else None
+            street: str = match.group(1).strip()
+            number: str = match.group(2).strip()
+            addition: Optional[str] = match.group(3).strip() or None
             return street, number, addition
         else:
-            return full_address, None, None
+            return full_address.strip(), None, None
     
     def get_facility_info(self, facility_url: str) -> Union[Dict[str, str], None]:
         response = self.session.get(url=facility_url)
@@ -106,7 +106,7 @@ class Webscrape:
             'plaats': address.get('addressLocality'),
             'postcode': address.get('postalCode', '').replace(' ', ''),
             'straat': address_split[0],
-            'huisnummer': address_split[1],
+            'huisnummer': int(address_split[1]),
             'toevoeging': address_split[2]
         }
 
