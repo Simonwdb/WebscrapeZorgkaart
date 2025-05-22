@@ -29,7 +29,7 @@ class Webscrape:
         return result
     
     def get_filter_links(self, results: List[bs4.element.Tag]) -> Dict[str, str]:
-        result_dict: Dict[str, str]
+        result_dict: Dict[str, str] = {}
         item: bs4.element.Tag
         for item in results:
             name_tag = item.find('a', class_='filter-result__name')
