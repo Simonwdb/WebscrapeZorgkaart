@@ -1,8 +1,9 @@
 import time
 import requests
 import bs4
+import re
 
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Tuple, Optional
 
 
 class Webscrape:
@@ -56,3 +57,14 @@ class Webscrape:
                     result_dict[name] = full_url
         
         return result_dict
+
+    @staticmethod
+    def split_address(full_address: str) -> Tuple[str, Optional[str], Optional[str]]:
+        match = re.match(r'^(.+?)\s(\d+)\s?([a-zA-Z]*)$', full_address.strip())
+        if match:
+            street: str = match.group(1)
+            number: str = match.group(2)
+            addition: Optional[str] = match.group(3) if match.group(3) else None
+            return street, number, addition
+        else:
+            return full_address, None, None
