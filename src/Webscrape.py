@@ -11,17 +11,18 @@ from typing import Dict, List, Union, Tuple, Optional
 class Webscrape:
     def __init__(self, base_url: str) -> None:
         self.base_url: str = base_url
-        self.headers: dict[str, str] = {
+        self.session: requests.Session = requests.Session()
+        self.session.headers.update({
             'User-Agent': (
                 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                 'AppleWebKit/537.36 (KHTML, like Gecko) '
                 'Chrome/114.0.0.0 Safari/537.36'
             )
-        }
+        })
     
     def get_page_total(self, facility: str) -> Union[int, None]:
         temp_url: str = f'{self.base_url}/{facility.lower()}'
-        response = requests.get(url=temp_url, headers=self.headers)
+        response = self.session.get(url=temp_url, headers=self.headers)
 
         if response.status_code != 200:
             return None
@@ -41,7 +42,7 @@ class Webscrape:
     
     def get_filter_result(self, facility: str, page_id: int = 1) -> Union[List[bs4.element.Tag], None]:
         temp_url: str = f'{self.base_url}/{facility.lower()}/pagina{page_id}'
-        response = requests.get(url=temp_url, headers=self.headers)
+        response = self.session.get(url=temp_url, headers=self.headers)
 
         if response.status_code != 200:
             return None
@@ -80,7 +81,7 @@ class Webscrape:
             return full_address, None, None
     
     def get_facility_info(self, facility_url: str) -> Union[Dict[str, str], None]:
-        response = requests.get(url=facility_url, headers=self.headers)
+        response = self.session.get(url=facility_url, headers=self.headers)
 
         if response.status_code != 200:
             return None
