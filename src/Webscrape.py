@@ -1,8 +1,8 @@
+import re
+import bs4
+import json
 import time
 import requests
-import bs4
-import re
-import json
 import pandas as pd
 
 from Facility import Facility
@@ -106,7 +106,7 @@ class Webscrape:
             'plaats': address.get('addressLocality'),
             'postcode': address.get('postalCode', '').replace(' ', ''),
             'straat': address_split[0],
-            'huisnummer': int(address_split[1]),
+            'huisnummer': address_split[1],
             'toevoeging': address_split[2]
         }
 
@@ -115,4 +115,5 @@ class Webscrape:
     def write_result_to_excel(self, result_list: List[Dict[str, str]], filename: str) -> None:
         temp_df = pd.DataFrame([data for data in result_list])
         temp_df.to_excel(filename, index=False)
+        print(f'Data succesfully writen to file: {filename}')
 
