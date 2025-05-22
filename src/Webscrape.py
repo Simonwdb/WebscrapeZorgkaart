@@ -27,3 +27,17 @@ class Webscrape:
         filter_results = soup.find('div', class_='filter-results')
         result = filter_results.find_all('div', class_='filter-result')
         return result
+    
+    def get_filter_links(self, results: List[bs4.element.Tag]) -> Dict[str, str]:
+        result_dict: Dict[str, str]
+        item: bs4.element.Tag
+        for item in results:
+            name_tag = item.find('a', class_='filter-result__name')
+            if name_tag:
+                name = name_tag.get_text(strip=True)
+                href = name_tag.get('href')
+                if href:
+                    full_url = f'{self.base_url}{href}'
+                    result_dict[name] = full_url
+        
+        return result_dict
