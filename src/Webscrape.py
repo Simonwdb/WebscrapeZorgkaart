@@ -3,6 +3,7 @@ import requests
 import bs4
 import re
 import json
+import pandas as pd
 
 from Facility import Facility
 from typing import Dict, List, Union, Tuple, Optional
@@ -22,7 +23,7 @@ class Webscrape:
     
     def get_page_total(self, facility: str) -> Union[int, None]:
         temp_url: str = f'{self.base_url}/{facility.lower()}'
-        response = self.session.get(url=temp_url, headers=self.headers)
+        response = self.session.get(url=temp_url)
 
         if response.status_code != 200:
             return None
@@ -42,7 +43,7 @@ class Webscrape:
     
     def get_filter_result(self, facility: str, page_id: int = 1) -> Union[List[bs4.element.Tag], None]:
         temp_url: str = f'{self.base_url}/{facility.lower()}/pagina{page_id}'
-        response = self.session.get(url=temp_url, headers=self.headers)
+        response = self.session.get(url=temp_url)
 
         if response.status_code != 200:
             return None
@@ -81,7 +82,7 @@ class Webscrape:
             return full_address, None, None
     
     def get_facility_info(self, facility_url: str) -> Union[Dict[str, str], None]:
-        response = self.session.get(url=facility_url, headers=self.headers)
+        response = self.session.get(url=facility_url)
 
         if response.status_code != 200:
             return None
@@ -105,10 +106,13 @@ class Webscrape:
             'plaats': address.get('addressLocality'),
             'postcode': address.get('postalCode', '').replace(' ', ''),
             'straat': address_split[0],
-            'huisnummer': address_split[1],
+            'huisnummer': int(address_split[1]),
             'toevoeging': address_split[2]
         }
 
         return result
-
+    
+    def write_result_to_excel(self, result_list: List[Dict[str, str]], filename: str) -> None:
+        temp_df = pd.DataFrame([data for data in result_list])
+        temp_df.to_excel(filename, index=False)
 
