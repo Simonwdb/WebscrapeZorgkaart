@@ -81,7 +81,7 @@ class Webscrape:
         data = json.loads(script.string)
         address = data.get('address')
         place = address.get('addressLocality')
-        postal_code = address.get('postalCode')
+        postal_code = address.get('postalCode').replace(' ', '')
         street_address = address.get('streetAddress')
         address_split = self.split_address(full_address=street_address)
         result = {
