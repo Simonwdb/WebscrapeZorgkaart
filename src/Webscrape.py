@@ -21,31 +21,23 @@ class Webscrape:
             )
         })
     
-    def get_all_facilities(self) -> Union[List[str], None]:
-        temp_addition: str = 'overzicht/organisatietypes'
-        temp_url: str = f'{self.base_url}/{temp_addition}'
+    def get_all_facilities(self) -> List[str]:
+        endpoint: str = 'overzicht/organisatietypes'
+        temp_url: str = f'{self.base_url}/{endpoint}'
         response = self.session.get(url=temp_url)
 
         if response.status_code != 200:
-            return None
+            return []
         
         soup = bs4.BeautifulSoup(response.content, 'html.parser')
         search_list = soup.find('div', class_='search-list')
-        result_list = search_list.find_all('div', class_='col-md-6')
+        
+        if not search_list:
+            return []
 
-        results: List[bs4.element.Tag] = []
-
-        for item in result_list:
-            results.extend(item)
-
-        results = [result for result in results if '\n' not in result]
-
-        facilities: List[str] = []
-
-        for result in results:
-            facility = result.get('href')[1:]
-            facilities.append(facility)
-
+        facility_tags = search_list.find_all('a', href=True)
+        facilities = [tag['href'].lstrip('/') for tag in facility_tags]
+        
         return facilities
 
     
