@@ -37,7 +37,7 @@ class Webscrape:
 
         facility_tags = search_list.find_all('a', href=True)
         facilities = [tag['href'].lstrip('/') for tag in facility_tags]
-        
+
         return facilities
 
     
@@ -132,8 +132,17 @@ class Webscrape:
 
         return result
     
-    def write_result_to_excel(self, result_list: List[Dict[str, str]], filename: str) -> None:
-        temp_df = pd.DataFrame([data for data in result_list])
-        temp_df.to_excel(filename, index=False)
-        print(f'Data succesfully writen to file: {filename}')
+    @staticmethod
+    def write_to_excel_file(data: Union[List[Dict[str, str]], List[List[str]]],
+                            file_name: str,
+                            col_names: List[str] = None) -> None:
+        if isinstance(data, list) and data and isinstance(data[0], dict):
+            df = pd.DataFrame(data)
+        elif isinstance(data, list) and col_names:
+            df = pd.DataFrame(data, columns=col_names)
+        else:
+            raise ValueError("Invalid data format. Provide either a list of dicts or list of lists with column names.")
+
+        df.to_excel(file_name, index=False)
+        print(f'Data successfully written to file: {file_name}')
 
