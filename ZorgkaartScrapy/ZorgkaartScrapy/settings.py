@@ -38,6 +38,8 @@ ITEM_PIPELINES = {
 
 # Excel-pipeline vereist UTF-8 encoding
 FEED_EXPORT_ENCODING = "utf-8"
+FEED_URI = "data/%(name)s.json"
+FEED_FORMAT = "json"
 
 # Logging (optioneel)
 LOG_LEVEL = "INFO"
