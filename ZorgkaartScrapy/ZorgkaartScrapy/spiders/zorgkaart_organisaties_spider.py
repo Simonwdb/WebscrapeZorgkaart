@@ -23,18 +23,29 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
     ) -> None:
         super().__init__(*args, **kwargs)
 
-        # --- Laad vanuit bestand ---
+        self.start_urls = []
+
         if start_urls_file:
             try:
                 with open(start_urls_file, "r", encoding="utf-8") as f:
-                    self.start_urls = json.load(f)
-                    assert isinstance(self.start_urls, list)
-                self.logger.info(f"start_urls geladen vanuit bestand: {start_urls_file}")
+                    alle_items = json.load(f)
+                    assert isinstance(alle_items, list)
+
+                    # Zoek de meest recente scraped_at datum
+                    datums = {item.get("scraped_at") for item in alle_items if "scraped_at" in item}
+                    meest_recent = max(datums) if datums else None
+
+                    if meest_recent:
+                        gefilterd = [item for item in alle_items if item.get("scraped_at") == meest_recent]
+                        self.start_urls = gefilterd
+                        self.logger.info(f"{len(gefilterd)} items gefilterd op meest recente datum: {meest_recent}")
+                    else:
+                        self.logger.warning("Geen geldige 'scraped_at' datums gevonden in inputbestand.")
+
             except Exception as e:
                 self.logger.error(f"Fout bij laden start_urls bestand: {e}")
                 self.start_urls = []
 
-        # --- Of direct via argument ---
         elif start_urls:
             try:
                 self.start_urls = json.loads(start_urls)
@@ -45,7 +56,6 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
                     self.logger.error(f"Kon start_urls niet parsen: {e}")
                     self.start_urls = []
 
-        # --- max_page optioneel meegeven ---
         try:
             self.max_page = int(max_page) if max_page is not None else None
         except Exception as e:
