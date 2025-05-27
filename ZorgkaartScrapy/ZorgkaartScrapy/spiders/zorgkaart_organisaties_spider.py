@@ -1,6 +1,8 @@
 import ast
 import json
 import scrapy
+from math import ceil
+from collections import defaultdict
 from typing import List, Dict, Optional, Generator, Any, AsyncGenerator, Union
 from scrapy.http import Response, Request
 from twisted.python.failure import Failure
@@ -15,8 +17,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
 
     def __init__(
         self,
-        start_urls: Optional[str] = None,
-        start_urls_file: Optional[str] = None,
+        start_urls_file: str = "data/zorgkaart_types_input.json",
         max_page: Optional[Union[str, int]] = None,
         *args: Any,
         **kwargs: Any
@@ -25,56 +26,49 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
 
         self.start_urls = []
 
-        if start_urls_file:
+        try:
+            with open(start_urls_file, "r", encoding="utf-8") as f:
+                all_items = json.load(f)
+        except Exception as e:
+            self.logger.error(f"Fout bij laden start_urls bestand: {e}")
+            all_items = []
+
+        for item in all_items:
             try:
-                with open(start_urls_file, "r", encoding="utf-8") as f:
-                    alle_items = json.load(f)
-                    assert isinstance(alle_items, list)
+                aantal = item.get("aantal")
+                count = item.get("scraped_count", 0)
 
-                    # Zoek de meest recente scraped_at datum
-                    datums = {item.get("scraped_at") for item in alle_items if "scraped_at" in item}
-                    meest_recent = max(datums) if datums else None
+                if isinstance(aantal, int) and count >= aantal:
+                    self.logger.info(f"⏩ Overslaan: {item['organisatietype']} (volledig gescrapet)")
+                    continue
 
-                    if meest_recent:
-                        gefilterd = [item for item in alle_items if item.get("scraped_at") == meest_recent]
-                        self.start_urls = gefilterd
-                        self.logger.info(f"{len(gefilterd)} items gefilterd op meest recente datum: {meest_recent}")
-                    else:
-                        self.logger.warning("Geen geldige 'scraped_at' datums gevonden in inputbestand.")
+                start_page = ceil(count / 20) + 1
+                item["start_page"] = start_page
+                self.start_urls.append(item)
 
             except Exception as e:
-                self.logger.error(f"Fout bij laden start_urls bestand: {e}")
-                self.start_urls = []
+                self.logger.warning(f"Fout bij verwerken item: {e}")
 
-        elif start_urls:
-            try:
-                self.start_urls = json.loads(start_urls)
-            except json.JSONDecodeError:
-                try:
-                    self.start_urls = ast.literal_eval(start_urls)
-                except Exception as e:
-                    self.logger.error(f"Kon start_urls niet parsen: {e}")
-                    self.start_urls = []
-
+        # Max pagina's
         try:
             self.max_page = int(max_page) if max_page is not None else None
         except Exception as e:
             self.logger.error(f"Kon max_page niet omzetten naar int: {e}")
             self.max_page = None
 
-        self.logger.info(f"start_urls ontvangen: {self.start_urls}")
-        self.logger.info(f"max_page ingesteld op: {self.max_page}")
+        self.logger.info(f"{len(self.start_urls)} organisatietypes opgenomen voor scraping.")
 
     async def start(self) -> AsyncGenerator[Request, None]:
         for entry in self.start_urls:
             url: str = entry.get("url")
             organisatietype: str = entry.get("organisatietype", "onbekend")
+            start_page: int = entry.get('start_page', 1)
 
             if url:
                 yield scrapy.Request(
-                    url=url,
+                    url=f'{url}/pagina{start_page}',
                     callback=self.parse,
-                    meta={"organisatietype": organisatietype, "page": 1},
+                    meta={"organisatietype": organisatietype, "page": start_page},
                     errback=self.error_handler
                 )
 
