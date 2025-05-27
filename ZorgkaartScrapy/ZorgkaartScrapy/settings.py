@@ -1,3 +1,6 @@
+import datetime
+from pathlib import Path
+
 # Scrapy settings for ZorgkaartScrapy project
 
 BOT_NAME = "ZorgkaartScrapy"
@@ -48,6 +51,13 @@ FEEDS = {
 
 # Logging (optioneel)
 LOG_LEVEL = "INFO"
+log_dir = Path("logs")
+log_dir.mkdir(exist_ok=True)
+
+LOG_ENABLED = True
+LOG_LEVEL = "INFO"
+LOG_STDOUT = True
+LOG_FILE = str(log_dir / f"scrapy_run_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
 
 # Zorg voor robuustheid bij fouten
 RETRY_ENABLED = True
