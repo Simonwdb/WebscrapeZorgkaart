@@ -4,13 +4,13 @@ from typing import Generator, Dict, Any
 
 
 class ZorgkaartOrganisatietypesSpider(scrapy.Spider):
-    name = "zorgkaart_organisatietypes"
+    name = "zorgkaart_types"
     allowed_domains = ["zorgkaartnederland.nl"]
     start_urls = ["https://www.zorgkaartnederland.nl/overzicht/organisatietypes"]
 
     custom_settings = {
         "FEEDS": {
-            "data/organisatietypes.json": {
+            "data/zorgkaart_types.json": {
                 "format": "json",
                 "encoding": "utf8",
                 "overwrite": True,
