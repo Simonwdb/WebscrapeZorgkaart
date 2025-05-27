@@ -18,25 +18,21 @@ class ZorgkaartOrganisatietypesSpider(scrapy.Spider):
     }
 
     def parse(self, response: scrapy.http.Response) -> Generator[Dict[str, Any], None, None]:
-        for li in response.css("ul.overview-list li.overview-list__item"):
-            link = li.css("a::attr(href)").get()
-            text = li.css("a::text").get()
+        for a_tag in response.css("a.filter-radio"):
+            url = response.urljoin(a_tag.css("::attr(href)").get())
 
-            if link and text:
-                # Scheid organisatietype en aantal, bijv. "Fysiotherapiepraktijk (6107)"
-                if "(" in text and text.endswith(")"):
-                    name_part, count_part = text.rsplit("(", 1)
-                    organisatietype = name_part.strip()
-                    try:
-                        aantal = int(count_part.strip(") "))
-                    except ValueError:
-                        aantal = None
-                else:
-                    organisatietype = text.strip()
-                    aantal = None
+            # Pak alles behalve de teller (span) → alleen de naam
+            naam_rouwe = a_tag.xpath("text()[normalize-space()]").get()
+            naam = naam_rouwe.strip() if naam_rouwe else "onbekend"
 
-                yield {
-                    "organisatietype": organisatietype,
-                    "url": response.urljoin(link),
-                    "aantal": aantal
-                }
+            aantal_str = a_tag.css("span.filter-radio__counter::text").get()
+            try:
+                aantal = int(aantal_str.strip("()")) if aantal_str else None
+            except ValueError:
+                aantal = None
+
+            yield {
+                "organisatietype": naam,
+                "url": url,
+                "aantal": aantal
+            }
