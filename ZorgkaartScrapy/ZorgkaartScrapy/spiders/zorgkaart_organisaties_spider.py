@@ -12,7 +12,16 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
         "https://www.zorgkaartnederland.nl/tandartsenpraktijk"
     ]
 
-    max_page: int = 5  # Beperk scraping tot eerste 5 pagina’s
+    max_page: Optional[int] = None  # Beperk scraping tot eerste 5 pagina’s
+
+    def __init__(self, max_page: Optional[str] = None, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        if max_page is not None:
+            try:
+                self.max_page = int(max_page)
+            except ValueError:
+                self.logger.warning(f"Ongeldige waarde voor max_page: {max_page}. Ignoreren.")
+                self.max_page = None
 
     def start_requests(self) -> Generator[scrapy.http.Request, None, None]:
         for url in self.start_urls:
