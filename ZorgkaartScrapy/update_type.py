@@ -24,8 +24,7 @@ with TYPES_FILE.open(encoding="utf-8") as f:
 for item in types:
     org_type = item.get("organisatietype")
     count = org_counts.get(org_type, 0)
-    start_page = ceil(count / 20) + 1 if count > 0 else 1
-    item["start_page"] = start_page
+    item["scraped_count"] = count
 
 # Schrijf output
 with OUTPUT_FILE.open("w", encoding="utf-8") as f:
