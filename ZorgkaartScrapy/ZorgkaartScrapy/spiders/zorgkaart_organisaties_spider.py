@@ -9,6 +9,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
     start_urls = [
         "https://www.zorgkaartnederland.nl/tandartsenpraktijk"
     ]
+    max_page = 5
 
     def parse(self, response):
         organisatietype = response.url.strip("/").split("/")[-1]
@@ -24,11 +25,12 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
                     "url": response.urljoin(relatieve_link.strip())
                 }
 
-        # Volgende pagina vinden en volgen
-        next_page = response.css('ul.pagination a.page-link')[-1]
-        if next_page:
-            label = next_page.css("::text").get()
-            if label and label.isdigit():
-                current_page = int(response.url.split("pagina")[-1]) if "pagina" in response.url else 1
-                next_page_url = f"{response.url.split('/pagina')[0]}/pagina{current_page + 1}"
-                yield scrapy.Request(next_page_url, callback=self.parse)
+        # Huidig paginanummer bepalen
+        if "pagina" in response.url:
+            current_page = int(response.url.split("pagina")[-1])
+        else:
+            current_page = 1
+
+        if current_page < self.max_page:
+            next_page_url = f"https://www.zorgkaartnederland.nl/{organisatietype}/pagina{current_page + 1}"
+            yield scrapy.Request(next_page_url, callback=self.parse)
