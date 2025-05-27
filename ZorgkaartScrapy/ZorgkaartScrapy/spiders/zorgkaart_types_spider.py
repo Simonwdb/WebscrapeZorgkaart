@@ -1,4 +1,5 @@
 import scrapy
+import datetime
 from typing import Generator, Dict, Any
 
 
@@ -34,5 +35,6 @@ class ZorgkaartOrganisatietypesSpider(scrapy.Spider):
             yield {
                 "organisatietype": naam,
                 "url": url,
-                "aantal": aantal
+                "aantal": aantal,
+                "scraped_at": datetime.date.today().isoformat()
             }
