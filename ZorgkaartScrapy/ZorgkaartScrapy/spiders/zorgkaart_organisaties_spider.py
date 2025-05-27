@@ -23,9 +23,9 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
                 self.logger.warning(f"Ongeldige waarde voor max_page: {max_page}. Ignoreren.")
                 self.max_page = None
 
-    def start_requests(self) -> Generator[scrapy.http.Request, None, None]:
+    async def start(self) -> AsyncGenerator[scrapy.Request, None]:
         for url in self.start_urls:
-            organisatietype: str = url.strip("/").split("/")[-1]
+            organisatietype = url.strip("/").split("/")[-1]
             yield scrapy.Request(url, callback=self.parse, meta={"organisatietype": organisatietype})
 
     def parse(self, response: scrapy.http.Request) -> Generator[Dict[str, any], None, None]:
