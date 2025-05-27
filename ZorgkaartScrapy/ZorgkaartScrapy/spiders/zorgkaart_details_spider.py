@@ -1,6 +1,7 @@
 import json
 import re
 import scrapy
+import datetime
 from pathlib import Path
 from typing import Dict, Generator, Optional, Tuple, Any
 
@@ -70,7 +71,8 @@ class ZorgkaartDetailsSpider(scrapy.Spider):
                 "huisnummer": huisnummer,
                 "toevoeging": toevoeging,
                 "postcode": address.get("postalCode", "").replace(" ", ""),
-                "plaats": address.get("addressLocality", "")
+                "plaats": address.get("addressLocality", ""),
+                "scraped_at": datetime.date.today().isoformat()
             }
         except Exception as e:
             self.logger.error(f"Fout bij parsen JSON op {response.url}: {e}")
