@@ -15,17 +15,17 @@ USER_AGENT = (
 # Niet verplicht robots.txt te volgen, anders blokkeert zorgkaart alles
 ROBOTSTXT_OBEY = False
 
-# Downloadvertraging tussen requests
-DOWNLOAD_DELAY = 1  # seconden
+# Zorg voor rustiger en evenwichtiger crawling
+DOWNLOAD_DELAY = 1  # 1 seconde vertraging tussen requests
+RANDOMIZE_DOWNLOAD_DELAY = True  # voeg random jitter toe
+CONCURRENT_REQUESTS_PER_DOMAIN = 2  # max 2 tegelijk naar hetzelfde domein
+CONCURRENT_REQUESTS_PER_IP = 2  # optioneel als IP-throttling nodig is
 
-# Maximaal aantal gelijktijdige requests per domein
-CONCURRENT_REQUESTS_PER_DOMAIN = 4
-
-# AutoThrottle inschakelen voor dynamische snelheid
+# Schakel AutoThrottle in om snelheid aan te passen aan de serverrespons
 AUTOTHROTTLE_ENABLED = True
 AUTOTHROTTLE_START_DELAY = 1
 AUTOTHROTTLE_MAX_DELAY = 10
-AUTOTHROTTLE_TARGET_CONCURRENCY = 2
+AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0  # gemiddeld 1 gelijktijdige request
 AUTOTHROTTLE_DEBUG = False
 
 # Cookies uitgeschakeld (indien niet nodig)
