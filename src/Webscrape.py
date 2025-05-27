@@ -96,7 +96,8 @@ class Webscrape:
         if match:
             street: str = match.group(1).strip()
             number: str = match.group(2).strip()
-            addition: Optional[str] = match.group(3).strip() or None
+            addition_raw: str = match.group(3).strip()
+            addition: Optional[str] = addition_raw.lstrip(', ').strip() if addition_raw else None
             return street, number, addition
         else:
             return full_address.strip(), None, None
