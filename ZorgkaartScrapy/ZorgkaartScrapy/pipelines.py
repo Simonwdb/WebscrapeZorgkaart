@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 
@@ -6,12 +7,12 @@ class ExcelExportPipeline:
         self.items = []
 
     def process_item(self, item, spider):
-        # Voeg het item toe aan de lijst
         self.items.append(dict(item))
         return item
 
     def close_spider(self, spider):
-        # Sla alles op in een Excel-bestand bij het afsluiten van de spider
+        os.makedirs('data', exist_ok=True)
+        filename = os.path.join('data', f'{spider.name}.xlsx')
         df = pd.DataFrame(self.items)
-        df.to_excel("zorgkaart_output.xlsx", index=False)
-        spider.logger.info(f"Excel-bestand succesvol geschreven: zorgkaart_output.xlsx")
+        df.to_excel(filename, index=False)
+        spider.logger.info(f"Excel-bestand succesvol geschreven: {filename}")
