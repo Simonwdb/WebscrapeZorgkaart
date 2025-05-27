@@ -48,3 +48,9 @@ FEEDS = {
 
 # Logging (optioneel)
 LOG_LEVEL = "INFO"
+
+# Zorg voor robuustheid bij fouten
+RETRY_ENABLED = True
+RETRY_TIMES = 5
+RETRY_HTTP_CODES = [429, 503, 500, 502, 504]
+DOWNLOAD_TIMEOUT = 30
