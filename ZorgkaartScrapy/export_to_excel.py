@@ -5,6 +5,9 @@ from pathlib import Path
 DETAILS_JSON = Path("data/zorgkaart_details_update.json")
 OUTPUT_EXCEL = Path("exports/zorgkaart_details.xlsx")
 
+# Zorg dat de exports-map bestaat
+OUTPUT_EXCEL.parent.mkdir(parents=True, exist_ok=True)
+
 # Laad data en exporteer
 if DETAILS_JSON.exists():
     df = pd.read_json(DETAILS_JSON)
