@@ -35,9 +35,9 @@ AUTOTHROTTLE_DEBUG = False
 COOKIES_ENABLED = False
 
 # Pipelines activeren om naar Excel te schrijven
-ITEM_PIPELINES = {
-    "ZorgkaartScrapy.pipelines.ExcelExportPipeline": 300,
-}
+# ITEM_PIPELINES = {
+#     "ZorgkaartScrapy.pipelines.ExcelExportPipeline": 300,
+# }
 
 # Excel-pipeline vereist UTF-8 encoding
 FEEDS = {
