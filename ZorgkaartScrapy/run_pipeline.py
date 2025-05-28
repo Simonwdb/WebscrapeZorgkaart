@@ -1,36 +1,36 @@
+import argparse
 import subprocess
-import sys
 
-def run_command(command: list[str], description: str):
-    print(f"\n▶{description}...")
+def run_command(cmd: str):
+    print(f"\n▶ {cmd}...")
     try:
-        subprocess.run(command, check=True)
-        print(f"{description} afgerond.")
+        subprocess.run(cmd, check=True, shell=True)
+        print(f"{cmd} afgerond.")
     except subprocess.CalledProcessError as e:
-        print(f"Fout bij {description}: {e}")
-        sys.exit(1)
+        print(f"Fout bij uitvoeren van {cmd}: {e}")
 
 def main():
-    # Stap 1: Organisatietypes scrapen
-    run_command(["scrapy", "crawl", "zorgkaart_types"], "Scrapen van organisatietypes")
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--py", default="python3",
+        help="Kies de Python executable (bijv. 'python' of 'python3')"
+    )
+    parser.add_argument(
+        "--max_page", type=int, default=None,
+        help="Maximaal aantal pagina’s dat spider 2 (organisaties) moet scrapen"
+    )
+    args = parser.parse_args()
 
-    # Stap 2: Samenvoegen met eerdere organisatietypes
-    run_command(["python", "update_organisatie.py"], "Updaten organisatietypes (types update)")
+    py = args.py
+    max_page_arg = f"-a max_page={args.max_page}" if args.max_page is not None else ""
 
-    # Stap 3: Tellen hoeveel al gescrapet is en nieuwe input aanmaken
-    run_command(["python", "update_type.py"], "Updaten organisatietypes (scraped_count toevoegen)")
-
-    # Stap 4: Organisaties scrapen (alleen pagina 1)
-    run_command(["scrapy", "crawl", "zorgkaart_organisaties", "-a", "max_page=1"], "Scrapen van organisaties (alleen eerste pagina)")
-
-    # Stap 5: Details scrapen
-    run_command(["scrapy", "crawl", "zorgkaart_details"], "Scrapen van organisatie-details")
-
-    # Stap 6: Updaten en samenvoegen van alle details
-    run_command(["python", "update_details.py"], "Updaten organisatie-details (details update)")
-
-    # Stap 7: Export naar Excel
-    run_command(["python", "export_to_excel.py"], "Exporteren naar Excel")
+    run_command("scrapy crawl zorgkaart_types")
+    run_command(f"{py} update_organisatie.py")
+    run_command(f"{py} update_type.py")
+    run_command(f"scrapy crawl zorgkaart_organisaties {max_page_arg}")
+    run_command("scrapy crawl zorgkaart_details")
+    run_command(f"{py} update_details.py")
+    run_command(f"{py} export_to_excel.py")
 
 if __name__ == "__main__":
     main()
