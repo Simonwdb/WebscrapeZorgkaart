@@ -27,7 +27,13 @@ def main():
     run_command("scrapy crawl zorgkaart_types")
     run_command(f"{py} update_organisatie.py")
     run_command(f"{py} update_type.py")
-    run_command(f"scrapy crawl zorgkaart_organisaties {max_page_arg}")
+
+    # Bouw scrapy crawl command dynamisch op
+    cmd_organisaties = "scrapy crawl zorgkaart_organisaties"
+    if max_page_arg:
+        cmd_organisaties += f" {max_page_arg}"
+    run_command(cmd_organisaties)
+
     run_command("scrapy crawl zorgkaart_details")
     run_command(f"{py} update_details.py")
     run_command(f"{py} export_to_excel.py")
