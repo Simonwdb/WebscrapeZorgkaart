@@ -4,7 +4,7 @@
     "url": "https://www.zorgkaartnederland.nl/medisch-pedicurepraktijk",
     "aantal": 5031,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Abortuskliniek",
@@ -18,21 +18,21 @@
     "url": "https://www.zorgkaartnederland.nl/apotheek",
     "aantal": 1945,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Arbo- en reïntegratiebedrijf",
     "url": "https://www.zorgkaartnederland.nl/arbo-en-reintegratiebedrijf",
     "aantal": 531,
     "scraped_at": "2025-05-27",
-    "scraped_count": 80
+    "scraped_count": 200
   },
   {
     "organisatietype": "Artsenpraktijk voor alternatieve geneeskunde",
     "url": "https://www.zorgkaartnederland.nl/artsenpraktijk-voor-alternatieve-geneeskunde",
     "aantal": 392,
     "scraped_at": "2025-05-27",
-    "scraped_count": 80
+    "scraped_count": 200
   },
   {
     "organisatietype": "Astmacentrum",
@@ -102,35 +102,35 @@
     "url": "https://www.zorgkaartnederland.nl/dagbesteding-voor-mensen-met-een-beperking",
     "aantal": 852,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Diagnostisch centrum",
     "url": "https://www.zorgkaartnederland.nl/diagnostisch-centrum",
     "aantal": 67,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 67
   },
   {
     "organisatietype": "Dialysecentrum",
     "url": "https://www.zorgkaartnederland.nl/dialysecentrum",
     "aantal": 92,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 92
   },
   {
     "organisatietype": "Diëtistenpraktijk",
     "url": "https://www.zorgkaartnederland.nl/dietistenpraktijk",
     "aantal": 3665,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Echocentrum",
     "url": "https://www.zorgkaartnederland.nl/echocentrum",
     "aantal": 103,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 103
   },
   {
     "organisatietype": "Epilepsiekliniek",
@@ -144,70 +144,70 @@
     "url": "https://www.zorgkaartnederland.nl/ergotherapiepraktijk",
     "aantal": 816,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Forensisch centrum",
     "url": "https://www.zorgkaartnederland.nl/forensisch-centrum",
     "aantal": 70,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 70
   },
   {
     "organisatietype": "Fysiotherapiepraktijk",
     "url": "https://www.zorgkaartnederland.nl/fysiotherapiepraktijk",
     "aantal": 9958,
     "scraped_at": "2025-05-28",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "GGD",
     "url": "https://www.zorgkaartnederland.nl/ggd",
     "aantal": 65,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 65
   },
   {
     "organisatietype": "GGZ",
     "url": "https://www.zorgkaartnederland.nl/ggz",
     "aantal": 2100,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Geriatrische revalidatiezorg",
     "url": "https://www.zorgkaartnederland.nl/geriatrische-revalidatiezorg",
     "aantal": 155,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 155
   },
   {
     "organisatietype": "Hospice",
     "url": "https://www.zorgkaartnederland.nl/hospice",
     "aantal": 192,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 192
   },
   {
     "organisatietype": "Huidtherapiepraktijk",
     "url": "https://www.zorgkaartnederland.nl/huidtherapiepraktijk",
     "aantal": 726,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Huisartsenpost",
     "url": "https://www.zorgkaartnederland.nl/huisartsenpost",
     "aantal": 108,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 108
   },
   {
     "organisatietype": "Huisartsenpraktijk",
     "url": "https://www.zorgkaartnederland.nl/huisartsenpraktijk",
     "aantal": 4831,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "IVF-kliniek",
@@ -221,14 +221,14 @@
     "url": "https://www.zorgkaartnederland.nl/jeugdgezondheidszorg",
     "aantal": 164,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 164
   },
   {
     "organisatietype": "Jeugdzorg",
     "url": "https://www.zorgkaartnederland.nl/jeugdzorg",
     "aantal": 356,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Kankercentrum",
@@ -242,56 +242,56 @@
     "url": "https://www.zorgkaartnederland.nl/kraamzorg",
     "aantal": 1192,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Logopediepraktijk",
     "url": "https://www.zorgkaartnederland.nl/logopediepraktijk",
     "aantal": 3070,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Medisch hulpmiddel",
     "url": "https://www.zorgkaartnederland.nl/medisch-hulpmiddel",
     "aantal": 991,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Medische kindzorg",
     "url": "https://www.zorgkaartnederland.nl/medische-kindzorg",
     "aantal": 62,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 62
   },
   {
     "organisatietype": "Mondhygiënistenpraktijk",
     "url": "https://www.zorgkaartnederland.nl/mondhygienistenpraktijk",
     "aantal": 727,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Oefentherapiepraktijk",
     "url": "https://www.zorgkaartnederland.nl/oefentherapiepraktijk",
     "aantal": 1350,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Optometriepraktijk",
     "url": "https://www.zorgkaartnederland.nl/optometriepraktijk",
     "aantal": 113,
     "scraped_at": "2025-05-28",
-    "scraped_count": 60
+    "scraped_count": 113
   },
   {
     "organisatietype": "Orthodontiepraktijk",
     "url": "https://www.zorgkaartnederland.nl/orthodontiepraktijk",
     "aantal": 342,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Orthoptistenpraktijk",
@@ -305,42 +305,42 @@
     "url": "https://www.zorgkaartnederland.nl/overige-zorg-en-ondersteuning-voor-mensen-met-een-beperking",
     "aantal": 912,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Particulier woonzorgcentrum",
     "url": "https://www.zorgkaartnederland.nl/particulier-woonzorgcentrum",
     "aantal": 629,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Patiëntenorganisatie",
     "url": "https://www.zorgkaartnederland.nl/patientenorganisatie",
     "aantal": 295,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Podologiepraktijk",
     "url": "https://www.zorgkaartnederland.nl/podologiepraktijk",
     "aantal": 340,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Podotherapiepraktijk",
     "url": "https://www.zorgkaartnederland.nl/podotherapiepraktijk",
     "aantal": 2050,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Psychiatriepraktijk",
     "url": "https://www.zorgkaartnederland.nl/psychiatriepraktijk",
     "aantal": 357,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Psycho-oncologisch centrum",
@@ -354,28 +354,28 @@
     "url": "https://www.zorgkaartnederland.nl/psychologiepraktijk-en-psychotherapiepraktijk",
     "aantal": 3536,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Revalidatiecentrum",
     "url": "https://www.zorgkaartnederland.nl/revalidatiecentrum",
     "aantal": 233,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Tandartsenpraktijk",
     "url": "https://www.zorgkaartnederland.nl/tandartsenpraktijk",
     "aantal": 4634,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Tandprothetische praktijk",
     "url": "https://www.zorgkaartnederland.nl/tandprothetische-praktijk",
     "aantal": 344,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Trombosedienst",
@@ -389,105 +389,105 @@
     "url": "https://www.zorgkaartnederland.nl/verloskundepraktijk",
     "aantal": 1134,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Verpleeghuis en verzorgingshuis",
     "url": "https://www.zorgkaartnederland.nl/verpleeghuis-en-verzorgingshuis",
     "aantal": 2358,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Verslavingszorg",
     "url": "https://www.zorgkaartnederland.nl/verslavingszorg",
     "aantal": 262,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Wijkverpleging",
     "url": "https://www.zorgkaartnederland.nl/wijkverpleging",
     "aantal": 4523,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Wonen voor mensen met een beperking",
     "url": "https://www.zorgkaartnederland.nl/wonen-voor-mensen-met-een-beperking",
     "aantal": 2948,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Ziekenhuis en kliniek",
     "url": "https://www.zorgkaartnederland.nl/ziekenhuis-en-kliniek",
     "aantal": 1597,
     "scraped_at": "2025-05-28",
-    "scraped_count": 60
+    "scraped_count": 142
   },
   {
     "organisatietype": "Centrum voor eetstoornissen",
     "url": "https://www.zorgkaartnederland.nl/centrum-voor-eetstoornissen",
     "aantal": 22,
     "scraped_at": "2025-05-27",
-    "scraped_count": 21
+    "scraped_count": 20
   },
   {
     "organisatietype": "Centrum voor orthopedie en beweging",
     "url": "https://www.zorgkaartnederland.nl/centrum-voor-orthopedie-en-beweging",
     "aantal": 77,
     "scraped_at": "2025-05-27",
-    "scraped_count": 56
+    "scraped_count": 59
   },
   {
     "organisatietype": "Dermatologisch centrum",
     "url": "https://www.zorgkaartnederland.nl/dermatologisch-centrum",
     "aantal": 95,
     "scraped_at": "2025-05-27",
-    "scraped_count": 59
+    "scraped_count": 89
   },
   {
     "organisatietype": "Esthetisch-medisch centrum",
     "url": "https://www.zorgkaartnederland.nl/esthetisch-medisch-centrum",
     "aantal": 312,
     "scraped_at": "2025-05-27",
-    "scraped_count": 19
+    "scraped_count": 179
   },
   {
     "organisatietype": "Flebologiecentrum",
     "url": "https://www.zorgkaartnederland.nl/flebologiecentrum",
     "aantal": 10,
     "scraped_at": "2025-05-27",
-    "scraped_count": 10
+    "scraped_count": 9
   },
   {
     "organisatietype": "Handcentrum en polscentrum",
     "url": "https://www.zorgkaartnederland.nl/handcentrum-en-polscentrum",
     "aantal": 65,
     "scraped_at": "2025-05-27",
-    "scraped_count": 58
+    "scraped_count": 50
   },
   {
     "organisatietype": "Oogkliniek",
     "url": "https://www.zorgkaartnederland.nl/oogkliniek",
     "aantal": 130,
     "scraped_at": "2025-05-28",
-    "scraped_count": 58
+    "scraped_count": 114
   },
   {
     "organisatietype": "Overige kliniek",
     "url": "https://www.zorgkaartnederland.nl/overige-kliniek",
     "aantal": 494,
     "scraped_at": "2025-05-27",
-    "scraped_count": 33
+    "scraped_count": 160
   },
   {
     "organisatietype": "Pijncentrum",
     "url": "https://www.zorgkaartnederland.nl/pijncentrum",
     "aantal": 20,
     "scraped_at": "2025-05-27",
-    "scraped_count": 19
+    "scraped_count": 16
   },
   {
     "organisatietype": "Radiotherapeutisch centrum",
@@ -501,21 +501,21 @@
     "url": "https://www.zorgkaartnederland.nl/sportmedisch-centrum",
     "aantal": 63,
     "scraped_at": "2025-05-27",
-    "scraped_count": 60
+    "scraped_count": 62
   },
   {
     "organisatietype": "Ziekenhuis",
     "url": "https://www.zorgkaartnederland.nl/ziekenhuis",
     "aantal": 292,
     "scraped_at": "2025-05-27",
-    "scraped_count": 59
+    "scraped_count": 182
   },
   {
     "organisatietype": "Zorgaanbieder overig",
     "url": "https://www.zorgkaartnederland.nl/zorgaanbieder-overig",
     "aantal": 449,
     "scraped_at": "2025-05-28",
-    "scraped_count": 60
+    "scraped_count": 200
   },
   {
     "organisatietype": "Zorghotel",
