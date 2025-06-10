@@ -1,16 +1,14 @@
-import ast
 import json
 import scrapy
 from math import ceil
-from collections import defaultdict
 from typing import List, Dict, Optional, Generator, Any, AsyncGenerator, Union
 from scrapy.http import Response, Request
 from twisted.python.failure import Failure
 
 
 class ZorgkaartOrganisatiesSpider(scrapy.Spider):
-    name: str = "zorgkaart_organisaties"
-    allowed_domains: List[str] = ["zorgkaartnederland.nl"]
+    name = "zorgkaart_organisaties"
+    allowed_domains = ["zorgkaartnederland.nl"]
 
     start_urls: List[Dict[str, str]] = []
     max_page: Optional[int] = None
@@ -23,7 +21,6 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
         **kwargs: Any
     ) -> None:
         super().__init__(*args, **kwargs)
-
         self.start_urls = []
 
         try:
@@ -39,7 +36,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
                 count = item.get("scraped_count", 0)
 
                 if isinstance(aantal, int) and count >= aantal:
-                    self.logger.info(f"⏩ Overslaan: {item['organisatietype']} (volledig gescrapet)")
+                    self.logger.info(f"Overslaan: {item['organisatietype']} (volledig gescrapet)")
                     continue
 
                 start_page = ceil(count / 20) + 1
@@ -49,7 +46,6 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
             except Exception as e:
                 self.logger.warning(f"Fout bij verwerken item: {e}")
 
-        # Max pagina's
         try:
             self.max_page = int(max_page) if max_page is not None else None
         except Exception as e:
@@ -62,24 +58,23 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
         for entry in self.start_urls:
             url: str = entry.get("url")
             organisatietype: str = entry.get("organisatietype", "onbekend")
-            start_page: int = entry.get('start_page', 1)
+            start_page: int = entry.get("start_page", 1)
 
             if url:
+                pagina_url = f"{url}/pagina{start_page}" if start_page > 1 else url
                 yield scrapy.Request(
-                    url=f'{url}/pagina{start_page}',
+                    url=pagina_url,
                     callback=self.parse,
                     meta={"organisatietype": organisatietype, "page": start_page},
                     errback=self.error_handler
                 )
 
     def parse(self, response: Response) -> Generator[Dict[str, Any], None, None]:
-        organisatietype: str = response.meta["organisatietype"]
-        current_page: int = response.meta["page"]
-        page_url: str = response.url
+        organisatietype = response.meta["organisatietype"]
+        current_page = response.meta["page"]
+        self.logger.info(f"[{organisatietype}] Pagina {current_page} geladen: {response.url}")
 
-        self.logger.info(f"[{organisatietype}] Pagina {current_page} geladen: {page_url}")
         resultaten = 0
-
         for item in response.css('div.filter-result'):
             naam = item.css('a.filter-result__name::text').get()
             relatieve_link = item.css('a.filter-result__name::attr(href)').get()
@@ -99,11 +94,9 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
             self.logger.info(f"[{organisatietype}] Max pagina bereikt ({self.max_page})")
             return
 
-        # Volgende pagina
         if response.css('ul.pagination a.page-link')[-1:]:
             base_url = response.url.split("/pagina")[0]
             next_page_url = f"{base_url}/pagina{current_page + 1}"
-            self.logger.info(f"[{organisatietype}] Volgende pagina: {next_page_url}")
             yield scrapy.Request(
                 url=next_page_url,
                 callback=self.parse,
@@ -115,4 +108,4 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
     def error_handler(self, failure: Failure) -> None:
         request = failure.request
         organisatietype = request.meta.get("organisatietype", "onbekend")
-        self.logger.error(f"[{organisatietype}] FOUT bij ophalen {request.url} → {repr(failure.value)}")
+        self.logger.error(f"[{organisatietype}] Fout bij ophalen {request.url} → {repr(failure.value)}")

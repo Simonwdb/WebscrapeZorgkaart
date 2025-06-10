@@ -15,31 +15,27 @@ USER_AGENT = (
     "Chrome/114.0.0.0 Safari/537.36"
 )
 
-# Niet verplicht robots.txt te volgen, anders blokkeert zorgkaart alles
+# Robots.txt niet volgen (Zorgkaart blokkeert anders)
 ROBOTSTXT_OBEY = False
 
-# Zorg voor rustiger en evenwichtiger crawling
-DOWNLOAD_DELAY = 1  # 1 seconde vertraging tussen requests
-RANDOMIZE_DOWNLOAD_DELAY = True  # voeg random jitter toe
-CONCURRENT_REQUESTS_PER_DOMAIN = 2  # max 2 tegelijk naar hetzelfde domein
-CONCURRENT_REQUESTS_PER_IP = 2  # optioneel als IP-throttling nodig is
+# Crawl-instellingen voor snelheid
+DOWNLOAD_DELAY = 0.1
+RANDOMIZE_DOWNLOAD_DELAY = True
+CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS_PER_DOMAIN = 8
+CONCURRENT_REQUESTS_PER_IP = 8
 
-# Schakel AutoThrottle in om snelheid aan te passen aan de serverrespons
+# AutoThrottle actief en ingesteld voor snelheid
 AUTOTHROTTLE_ENABLED = True
-AUTOTHROTTLE_START_DELAY = 1
-AUTOTHROTTLE_MAX_DELAY = 10
-AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0  # gemiddeld 1 gelijktijdige request
-AUTOTHROTTLE_DEBUG = False
+AUTOTHROTTLE_START_DELAY = 0.5
+AUTOTHROTTLE_MAX_DELAY = 5
+AUTOTHROTTLE_TARGET_CONCURRENCY = 4.0
+AUTOTHROTTLE_DEBUG = True  # Log automatisch aangepaste vertragingen
 
-# Cookies uitgeschakeld (indien niet nodig)
+# Cookies uitgeschakeld
 COOKIES_ENABLED = False
 
-# Pipelines activeren om naar Excel te schrijven
-ITEM_PIPELINES = {
-    "ZorgkaartScrapy.pipelines.ExcelExportPipeline": 300,
-}
-
-# Excel-pipeline vereist UTF-8 encoding
+# FEEDS naar JSON
 FEEDS = {
     'data/%(name)s.json': {
         'format': 'json',
@@ -49,18 +45,19 @@ FEEDS = {
     }
 }
 
-# Logging (optioneel)
+# Logging naar bestand
 LOG_LEVEL = "INFO"
 log_dir = Path("logs")
 log_dir.mkdir(exist_ok=True)
 
 LOG_ENABLED = True
-LOG_LEVEL = "INFO"
 LOG_STDOUT = True
 LOG_FILE = str(log_dir / f"scrapy_run_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
 
-# Zorg voor robuustheid bij fouten
+# Hertries voor foutcodes
 RETRY_ENABLED = True
 RETRY_TIMES = 5
 RETRY_HTTP_CODES = [429, 503, 500, 502, 504]
-DOWNLOAD_TIMEOUT = 30
+
+# Max wachttijd voor response
+DOWNLOAD_TIMEOUT = 5
