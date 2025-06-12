@@ -25,6 +25,8 @@ class ZorgkaartDetailsSpider(scrapy.Spider):
         self.input_file = Path(input_file)
         self.start_data = []
 
+        self.logger.info(f"Details spider gestart met input: {self.input_file}")
+
         if not self.input_file.exists():
             self.logger.error(f"Bestand niet gevonden: {self.input_file}")
             return
@@ -33,6 +35,7 @@ class ZorgkaartDetailsSpider(scrapy.Spider):
             try:
                 self.start_data = json.load(f)
                 assert isinstance(self.start_data, list)
+                self.logger.info(f"{len(self.start_data)} items geladen uit inputbestand.")
             except Exception as e:
                 self.logger.error(f"Fout bij laden van input: {e}")
 
@@ -40,6 +43,7 @@ class ZorgkaartDetailsSpider(scrapy.Spider):
         for entry in self.start_data:
             url = entry.get("url")
             if url:
+                self.logger.info(f"Bezoek URL: {url}")
                 yield scrapy.Request(
                     url=url,
                     callback=self.parse,
@@ -65,7 +69,7 @@ class ZorgkaartDetailsSpider(scrapy.Spider):
 
             straat, huisnummer, toevoeging = self.split_address(straat_raw)
 
-            yield {
+            item = {
                 **base_data,
                 "straat": straat,
                 "huisnummer": huisnummer,
@@ -74,6 +78,10 @@ class ZorgkaartDetailsSpider(scrapy.Spider):
                 "plaats": address.get("addressLocality", ""),
                 "scraped_at": datetime.date.today().isoformat()
             }
+
+            self.logger.info(f"Adres verwerkt voor: {base_data.get('naam', 'onbekend')} → {straat} {huisnummer}")
+            yield item
+
         except Exception as e:
             self.logger.error(f"Fout bij parsen JSON op {response.url}: {e}")
 
