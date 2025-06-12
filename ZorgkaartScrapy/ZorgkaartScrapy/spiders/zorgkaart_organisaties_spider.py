@@ -32,6 +32,8 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
             self.logger.error(f"Fout bij laden start_urls bestand: {e}")
             all_items = []
 
+        all_items = [item for item in all_items if item['aantal'] != item['scraped_count']]
+        
         for item in all_items:
             try:
                 aantal = item.get("aantal")
