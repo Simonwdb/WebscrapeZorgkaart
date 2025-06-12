@@ -19,10 +19,13 @@ class ZorgkaartOrganisatietypesSpider(scrapy.Spider):
     }
 
     def parse(self, response: scrapy.http.Response) -> Generator[Dict[str, Any], None, None]:
+        self.logger.info("▶ Start met scrapen van organisatietypes...")
+
+        totaal = 0
+
         for a_tag in response.css("a.filter-radio"):
             url = response.urljoin(a_tag.css("::attr(href)").get())
 
-            # Pak alles behalve de teller (span) → alleen de naam
             naam_rouwe = a_tag.xpath("text()[normalize-space()]").get()
             naam = naam_rouwe.strip() if naam_rouwe else "onbekend"
 
@@ -32,9 +35,14 @@ class ZorgkaartOrganisatietypesSpider(scrapy.Spider):
             except ValueError:
                 aantal = None
 
+            self.logger.info(f"Gevonden organisatietype: {naam} ({aantal}) - {url}")
+            totaal += 1
+
             yield {
                 "organisatietype": naam,
                 "url": url,
                 "aantal": aantal,
                 "scraped_at": datetime.date.today().isoformat()
             }
+
+        self.logger.info(f"✅ Scrapen van organisatietypes voltooid ({totaal} types gevonden).")
