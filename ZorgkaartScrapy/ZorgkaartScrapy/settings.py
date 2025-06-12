@@ -50,7 +50,7 @@ LOG_LEVEL = "INFO"
 log_dir = Path("logs")
 log_dir.mkdir(exist_ok=True)
 
-LOG_ENABLED = False
+LOG_ENABLED = True
 LOG_STDOUT = False
 LOG_FILE = str(log_dir / f"scrapy_run_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
 
