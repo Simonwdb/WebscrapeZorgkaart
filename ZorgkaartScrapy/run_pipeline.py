@@ -25,7 +25,7 @@ def main():
     max_page_arg = f"-a max_page={args.max_page}" if args.max_page is not None else ""
 
     run_command("scrapy crawl zorgkaart_types")
-    run_command(f"{py} update_organisatie.py")
+    run_command(f"{py} update_organisatie_count.py")
     run_command(f"{py} update_type.py")
 
     # Bouw scrapy crawl command dynamisch op
