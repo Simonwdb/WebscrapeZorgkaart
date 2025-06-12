@@ -23,6 +23,8 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
         super().__init__(*args, **kwargs)
         self.start_urls = []
 
+        self.logger.info("Start met laden van start_urls uit JSON-bestand...")
+
         try:
             with open(start_urls_file, "r", encoding="utf-8") as f:
                 all_items = json.load(f)
@@ -62,6 +64,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
 
             if url:
                 pagina_url = f"{url}/pagina{start_page}" if start_page > 1 else url
+                self.logger.info(f"Start scraping voor: {organisatietype} vanaf pagina {start_page} → {pagina_url}")
                 yield scrapy.Request(
                     url=pagina_url,
                     callback=self.parse,
@@ -97,6 +100,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
         if response.css('ul.pagination a.page-link')[-1:]:
             base_url = response.url.split("/pagina")[0]
             next_page_url = f"{base_url}/pagina{current_page + 1}"
+            self.logger.info(f"[{organisatietype}] Volgende pagina: {next_page_url}")
             yield scrapy.Request(
                 url=next_page_url,
                 callback=self.parse,
