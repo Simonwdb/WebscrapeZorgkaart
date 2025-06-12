@@ -23,7 +23,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
         super().__init__(*args, **kwargs)
         self.start_urls = []
 
-        print("Start met laden van start_urls uit JSON-bestand...")
+        print(f"Start met laden van start_urls uit JSON-bestand... -- max_page = {max_page}")
 
         try:
             with open(start_urls_file, "r", encoding="utf-8") as f:
@@ -93,7 +93,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
         if resultaten == 0:
             self.logger.warning(f"[{organisatietype}] Geen resultaten gevonden op pagina {current_page}")
 
-        if self.max_page is not None and current_page >= self.max_page:
+        if self.max_page is not None and current_page > self.max_page:
             print(f"[{organisatietype}] Max pagina bereikt ({self.max_page})")
             return
 
