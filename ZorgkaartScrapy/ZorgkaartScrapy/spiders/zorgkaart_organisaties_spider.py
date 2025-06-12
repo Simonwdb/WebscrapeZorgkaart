@@ -29,7 +29,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
             with open(start_urls_file, "r", encoding="utf-8") as f:
                 all_items = json.load(f)
         except Exception as e:
-            self.logger.error(f"Fout bij laden start_urls bestand: {e}")
+            print(f"Fout bij laden start_urls bestand: {e}")
             all_items = []
 
         for item in all_items:
@@ -46,12 +46,12 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
                 self.start_urls.append(item)
 
             except Exception as e:
-                self.logger.warning(f"Fout bij verwerken item: {e}")
+                print(f"Fout bij verwerken item: {e}")
 
         try:
             self.max_page = int(max_page) if max_page is not None else None
         except Exception as e:
-            self.logger.error(f"Kon max_page niet omzetten naar int: {e}")
+            print(f"Kon max_page niet omzetten naar int: {e}")
             self.max_page = None
 
         print(f"{len(self.start_urls)} organisatietypes opgenomen voor scraping.")
@@ -68,13 +68,19 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
                 yield scrapy.Request(
                     url=pagina_url,
                     callback=self.parse,
-                    meta={"organisatietype": organisatietype, "page": start_page},
+                    meta={
+                        "organisatietype": organisatietype,
+                        "page": start_page,
+                        "start_page": start_page
+                    },
                     errback=self.error_handler
                 )
 
     def parse(self, response: Response) -> Generator[Dict[str, Any], None, None]:
         organisatietype = response.meta["organisatietype"]
         current_page = response.meta["page"]
+        start_page = response.meta["start_page"]
+
         print(f"[{organisatietype}] Pagina {current_page} geladen: {response.url}")
 
         resultaten = 0
@@ -91,12 +97,14 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
                 }
 
         if resultaten == 0:
-            self.logger.warning(f"[{organisatietype}] Geen resultaten gevonden op pagina {current_page}")
+            print(f"[{organisatietype}] Geen resultaten gevonden op pagina {current_page}")
 
-        if self.max_page is not None and current_page > self.max_page:
-            print(f"[{organisatietype}] Max pagina bereikt ({self.max_page})")
+        # Nieuwe max_page logica: max aantal extra pagina’s
+        if self.max_page is not None and (current_page - start_page) >= self.max_page:
+            print(f"[{organisatietype}] Max aantal extra pagina’s ({self.max_page}) bereikt vanaf pagina {start_page}")
             return
 
+        # Check of er een volgende pagina beschikbaar is
         if response.css('ul.pagination a.page-link')[-1:]:
             base_url = response.url.split("/pagina")[0]
             next_page_url = f"{base_url}/pagina{current_page + 1}"
@@ -104,7 +112,11 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
             yield scrapy.Request(
                 url=next_page_url,
                 callback=self.parse,
-                meta={"organisatietype": organisatietype, "page": current_page + 1},
+                meta={
+                    "organisatietype": organisatietype,
+                    "page": current_page + 1,
+                    "start_page": start_page
+                },
                 errback=self.error_handler,
                 dont_filter=True
             )
@@ -112,4 +124,4 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
     def error_handler(self, failure: Failure) -> None:
         request = failure.request
         organisatietype = request.meta.get("organisatietype", "onbekend")
-        self.logger.error(f"[{organisatietype}] Fout bij ophalen {request.url} → {repr(failure.value)}")
+        print(f"[{organisatietype}] FOUT bij ophalen {request.url} → {repr(failure.value)}")
