@@ -6,7 +6,7 @@ from collections import defaultdict
 # Bestanden
 ORGANISATIES_FILE = Path("data/zorgkaart_details_update.json")
 TYPES_FILE = Path("data/zorgkaart_types_update.json")
-OUTPUT_FILE = Path("data/zorgkaart_types_input.json")
+INPUT_FILE = Path("data/zorgkaart_types_input.json")
 
 # Tel per organisatietype hoeveel organisaties er al zijn
 org_counts = defaultdict(int)
@@ -26,6 +26,12 @@ for item in types:
     count = org_counts.get(org_type, 0)
     item["scraped_count"] = count
 
-# Schrijf output
-with OUTPUT_FILE.open("w", encoding="utf-8") as f:
+# Schrijf update file met nieuw count en scraped_count
+with TYPES_FILE.open("w", encoding="utf-8") as f:
     json.dump(types, f, ensure_ascii=False, indent=2)
+
+input_items = [item for item in types if item['aantal'] != item['scraped_count']]
+
+# Schrijf de aantal organisatietypes als input, die niet gelijk zijn aan het aantal en scraped_count
+with INPUT_FILE.open('w', encoding='utf-8') as f:
+    json.dump(input_items, f, ensure_ascii=False, indent=2)
