@@ -19,7 +19,7 @@ class ZorgkaartOrganisatietypesSpider(scrapy.Spider):
     }
 
     def parse(self, response: scrapy.http.Response) -> Generator[Dict[str, Any], None, None]:
-        self.logger.info("▶ Start met scrapen van organisatietypes...")
+        print("▶ Start met scrapen van organisatietypes...")
 
         totaal = 0
 
@@ -35,7 +35,7 @@ class ZorgkaartOrganisatietypesSpider(scrapy.Spider):
             except ValueError:
                 aantal = None
 
-            self.logger.info(f"Gevonden organisatietype: {naam} ({aantal}) - {url}")
+            print(f"Gevonden organisatietype: {naam} ({aantal}) - {url}")
             totaal += 1
 
             yield {
@@ -45,4 +45,4 @@ class ZorgkaartOrganisatietypesSpider(scrapy.Spider):
                 "scraped_at": datetime.date.today().isoformat()
             }
 
-        self.logger.info(f"✅ Scrapen van organisatietypes voltooid ({totaal} types gevonden).")
+        print(f"✅ Scrapen van organisatietypes voltooid ({totaal} types gevonden).")
