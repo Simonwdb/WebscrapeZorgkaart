@@ -29,7 +29,7 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
             with open(start_urls_file, "r", encoding="utf-8") as f:
                 all_items = json.load(f)
         except Exception as e:
-            print(f"Fout bij laden start_urls bestand: {e}")
+            self.logger.error(f"Fout bij laden start_urls bestand: {e}")
             all_items = []
 
         for item in all_items:
@@ -48,12 +48,12 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
                 self.start_urls.append(item)
 
             except Exception as e:
-                print(f"Fout bij verwerken item: {e}")
+                self.logger.error(f"Fout bij verwerken item: {e}")
 
         try:
             self.max_page = int(max_page) if max_page is not None else None
         except Exception as e:
-            print(f"Kon max_page niet omzetten naar int: {e}")
+            self.logger.error(f"Kon max_page niet omzetten naar int: {e}")
             self.max_page = None
 
         print(f"{len(self.start_urls)} organisatietypes opgenomen voor scraping.")
@@ -139,4 +139,4 @@ class ZorgkaartOrganisatiesSpider(scrapy.Spider):
     def error_handler(self, failure: Failure) -> None:
         request = failure.request
         organisatietype = request.meta.get("organisatietype", "onbekend")
-        print(f"[{organisatietype}] Fout bij ophalen {request.url} → {repr(failure.value)}")
+        self.logger.error(f"[{organisatietype}] Fout bij ophalen {request.url} → {repr(failure.value)}")
