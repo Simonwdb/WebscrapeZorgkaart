@@ -4,4 +4,5 @@ src/.DS_Store
 __pycache__/
 *.py[cod]
 logs/
-~
+~*
+~$*
