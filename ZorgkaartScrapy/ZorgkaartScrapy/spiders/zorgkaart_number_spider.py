@@ -46,7 +46,7 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
             else:
                 count = None
 
-            message = f"✅ {base_url}/specialisten → {count if count is not None else 'geen'} specialisten gevonden"
+            message = f"✅ {base_url}/specialisten → {count if count is not None else 'no'} specialists found"
             print(message)
 
             yield {
