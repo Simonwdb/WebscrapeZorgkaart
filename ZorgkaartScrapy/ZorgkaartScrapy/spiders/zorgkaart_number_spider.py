@@ -7,7 +7,7 @@ from typing import Generator, Dict, Any
 
 
 class ZorgkaartNumberSpiderSpider(scrapy.Spider):
-    name = "zorgkaart_number_spider"
+    name = "zorgkaart_number"
     allowed_domains = ["zorgkaartnederland.nl"]
 
     def start_requests(self) -> Generator[scrapy.Request, None, None]:
