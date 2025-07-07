@@ -1,9 +1,11 @@
 import pandas as pd
 from pathlib import Path
+from datetime import datetime
 
 # Bestanden
 DETAILS_JSON = Path("data/zorgkaart_details_update.json")
-OUTPUT_EXCEL = Path("exports/zorgkaart_details.xlsx")
+today_str = datetime.today().strftime("%Y%m%d")
+OUTPUT_EXCEL = Path(f"exports/{today_str} - Zorgkaart_details.xlsx")
 
 # Zorg dat de exports-map bestaat
 OUTPUT_EXCEL.parent.mkdir(parents=True, exist_ok=True)
