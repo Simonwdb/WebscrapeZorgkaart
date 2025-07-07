@@ -1,3 +1,56 @@
 [
-{"organisatietype": "Apotheek", "base_url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-greidanus-harderwijk-172701", "job_title": "Apotheker", "specialisten_count": 2}
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-oudewater-oudewater-171943",
+    "job_title": "Apotheker",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-greidanus-harderwijk-172701",
+    "job_title": "Apotheker",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-benu-apotheek-de-rietlanden-emmen-174935",
+    "job_title": "Apotheker",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-groenstraat-tilburg-173242",
+    "job_title": "Apotheker",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-stroinkslanden-enschede-174752",
+    "job_title": "Apotheker",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-de-wetering-kampen-175151",
+    "job_title": "Apotheker",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-oostermoer-gieten-3027686",
+    "job_title": "Apotheker",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-baurichter-enschede-174754",
+    "job_title": "Apotheker",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Apotheek",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-born-born-173933",
+    "job_title": "Apotheker",
+    "specialisten_count": 1
+  }
 ]
