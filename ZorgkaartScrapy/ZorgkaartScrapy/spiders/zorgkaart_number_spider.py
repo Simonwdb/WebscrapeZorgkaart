@@ -9,6 +9,9 @@ from typing import Generator, Dict, Any
 class ZorgkaartNumberSpiderSpider(scrapy.Spider):
     name = "zorgkaart_number"
     allowed_domains = ["zorgkaartnederland.nl"]
+    custom_settings = {
+        "FEEDS": {}
+    }
 
     def __init__(self, target: str = "Tandartsenpraktijk", job_title: str = "Tandarts", limit: int = None, *args, **kwargs):
         super().__init__(*args, **kwargs)
