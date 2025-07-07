@@ -10,6 +10,20 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
     name = "zorgkaart_number"
     allowed_domains = ["zorgkaartnederland.nl"]
 
+    custom_settings = {
+    "FEEDS": {
+        "data/zorgkaart_number.json": {
+            "format": "json",
+            "encoding": "utf8",
+            "overwrite": True
+        }
+    }
+}
+
+    def __init__(self, target: str = "Tandartsenpraktijk", *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.target = target
+    
     def start_requests(self) -> Generator[scrapy.Request, None, None]:
         json_path = Path("data/zorgkaart_details_update.json")
 
@@ -20,7 +34,7 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
         with json_path.open(encoding="utf-8") as f:
             organisaties = json.load(f)
 
-        target_organisaties = [data for data in organisaties if data['organisatietype'] == 'Tandartsenpraktijk']
+        target_organisaties = [data for data in organisaties if data['organisatietype'] == self.target]
 
         for item in target_organisaties:
             url = item.get("url")
@@ -30,12 +44,15 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
                 yield scrapy.Request(
                     url=full_url,
                     callback=self.parse,
-                    meta={"base_url": url}
+                    meta={
+                        "base_url": url,
+                        "organisatietype": self.target}
                 )
             break  # For now, only scrape the first item
 
     def parse(self, response: scrapy.http.Response) -> Generator[Dict[str, Any], None, None]:
         base_url = response.meta['base_url']
+        organisatietype = response.meta['organisatietype']
 
         try:
             a_tags = response.css("div.filter__aside__item a")
@@ -50,6 +67,7 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
             print(message)
 
             yield {
+                "organisatietype": organisatietype,
                 "base_url": base_url,
                 "specialisten_count": count
             }
