@@ -6,6 +6,7 @@ from datetime import datetime
 DETAILS_JSON = Path("data/zorgkaart_details_update.json")
 today_str = datetime.today().strftime("%Y%m%d")
 OUTPUT_EXCEL = Path(f"exports/{today_str} - Zorgkaart_details.xlsx")
+GEMEENTE_FILE = Path("../20250625 - GemeenteNamen.xlsx")
 
 # Zorg dat de exports-map bestaat
 OUTPUT_EXCEL.parent.mkdir(parents=True, exist_ok=True)
@@ -26,6 +27,26 @@ if DETAILS_JSON.exists():
 
     # Ontdubbelen op basis van geselecteerde kolommen
     deduplicated_df = combined_df.drop_duplicates(subset=DEDUPLICATE_ON)
+
+    # Toevoegen van Gemeentenaam
+    # Laden van dataframe met Gemeentenamen
+    gem_df = pd.read_excel(GEMEENTE_FILE)
+
+    # Plaatsnaam Bergen veranderen
+    deduplicated_df.loc[deduplicated_df['plaats'] == 'Bergen', 'plaats'] = deduplicated_df.loc[deduplicated_df['plaats'] == 'Bergen'].apply(
+        lambda row: 'Bergen (NH)' if str(row['postcode']).startswith('18') else 'Bergen L',
+        axis=1
+    )
+
+    # Toevoegen kolom GemeenteNaam
+    deduplicated_df = deduplicated_df.merge(
+        gem_df[['Value', 'StringValue']],
+        left_on='plaats',
+        right_on='Value',
+        how='left'
+    )
+    deduplicated_df.rename(columns={'StringValue': 'GemeenteNaam'}, inplace=True)
+    deduplicated_df.drop(columns=['Value'], inplace=True)
 
     # Schrijf resultaat naar Excel
     deduplicated_df.to_excel(OUTPUT_EXCEL, index=False)
