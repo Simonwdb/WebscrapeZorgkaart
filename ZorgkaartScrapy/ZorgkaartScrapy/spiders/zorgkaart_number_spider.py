@@ -10,20 +10,21 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
     name = "zorgkaart_number"
     allowed_domains = ["zorgkaartnederland.nl"]
 
-    custom_settings = {
-    "FEEDS": {
-        "data/zorgkaart_number.json": {
-            "format": "json",
-            "encoding": "utf8",
-            "overwrite": True
-        }
-    }
-}
-
     def __init__(self, target: str = "Tandartsenpraktijk", job_title: str = "Tandarts", *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.target = target
         self.job_title = job_title
+        
+        safe_job_title = self.job_title.lower().replace(" ", "_")
+        self.custom_settings = {
+            "FEEDS": {
+                f"data/zorgkaart_number_{safe_job_title}.json": {
+                    "format": "json",
+                    "encoding": "utf8",
+                    "overwrite": True
+                }
+            }
+        }
     
     def start_requests(self) -> Generator[scrapy.Request, None, None]:
         json_path = Path("data/zorgkaart_details_update.json")
