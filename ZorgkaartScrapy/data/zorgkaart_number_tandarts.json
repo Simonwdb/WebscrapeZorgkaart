@@ -172,5 +172,509 @@
     "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundepraktijk-stadhouderskade-amsterdam-3040460",
     "job_title": "Tandarts",
     "specialisten_count": 7
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-lassus-tandartsen-keizersgracht-amsterdam-3042688",
+    "job_title": "Tandarts",
+    "specialisten_count": 10
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-harp-tiel-3043499",
+    "job_title": "Tandarts",
+    "specialisten_count": 5
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsenpraktijk-johan-huizingalaan-amsterdam-178683",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dentista-amsterdam-amsterdam-10020590",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-weideveld-tandheelkunde-purmerend-179045",
+    "job_title": "Tandarts",
+    "specialisten_count": 7
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-westervoort-westervoort-186845",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-joure-joure-188033",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-almere-perspectief-almere-3024424",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsenpraktijk-de-verbetering-groningen-188489",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-kerkelanden-hilversum-179808",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-kolkman-aarle-rixtel-186095",
+    "job_title": "Tandarts",
+    "specialisten_count": 4
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-nederland-heerhugowaard-heerhugowaard-3060229",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-m2-tandartsen-locatie-voorburg-voorburg-180909",
+    "job_title": "Tandarts",
+    "specialisten_count": 8
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-makdo-mondzorgpraktijk-locatie-oost-souburg-oost-souburg-208104",
+    "job_title": "Tandarts",
+    "specialisten_count": 7
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-heerlen-heerlen-3040995",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-toed-alkmaar-alkmaar-180442",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-amstel-dental-tandarts-amsterdam-amsterdam-3060926",
+    "job_title": "Tandarts",
+    "specialisten_count": 4
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-oude-rijn-tandartsen-locatie-alphen-aan-den-rijn-alphen-aan-den-rijn-10022483",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-groningen-de-ommelanden-groningen-3039553",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-staas-bergmans-locatie-graafseweg-s-hertogenbosch-3044917",
+    "job_title": "Tandarts",
+    "specialisten_count": 10
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-staas-bergmans-locatie-schubertsingel-s-hertogenbosch-10011916",
+    "job_title": "Tandarts",
+    "specialisten_count": 28
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-ijsselstate-tandartsen-dieren-3050534",
+    "job_title": "Tandarts",
+    "specialisten_count": 5
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-veenendaal-de-vallei-veenendaal-3042797",
+    "job_title": "Tandarts",
+    "specialisten_count": 5
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-de-amsterdamse-tandarts-centrum-oost-amsterdam-178764",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsenpraktijk-rivierenbuurt-groningen-225425",
+    "job_title": "Tandarts",
+    "specialisten_count": 4
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dentaldynamic-leeuwarden-188181",
+    "job_title": "Tandarts",
+    "specialisten_count": 4
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-nederland-westzaan-westzaan-3061531",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-krommenie-krommenie-3020805",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-hanevoet-eindhoven-185302",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-laugeman-tilburg-3031209",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-maatschap-voor-tandheelkunde-rijswijk-rijswijk-3040468",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-best-best-3041919",
+    "job_title": "Tandarts",
+    "specialisten_count": 9
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-almere-de-notekraker-almere-3043494",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-parodontologie-haarlem-haarlem-3062591",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-zeist-zeist-183868",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-huizen-huizen-179795",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-de-poort-van-nieuwegein-nieuwegein-182890",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-diemen-diemen-10016558",
+    "job_title": "Tandarts",
+    "specialisten_count": 7
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-toed-zuyd-heerhugowaard-225817",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-nootdorp-nootdorp-181909",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-van-leeuwen-tandartsen-centrum-voor-mondzorg-en-implantologie-leiden-leiden-3040748",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-de-groene-hoek-locatie-1-rotterdam-3041093",
+    "job_title": "Tandarts",
+    "specialisten_count": 15
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-arnhem-noord-arnhem-3033490",
+    "job_title": "Tandarts",
+    "specialisten_count": 7
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-vreugdenhil-tandartsen-geldermalsen-geldermalsen-184008",
+    "job_title": "Tandarts",
+    "specialisten_count": 7
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-m3-mondzorg-helmond-helmond-3058962",
+    "job_title": "Tandarts",
+    "specialisten_count": 7
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsenpraktijk-de-waterval-almere-3021184",
+    "job_title": "Tandarts",
+    "specialisten_count": 8
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-alkmaar-alkmaar-3033420",
+    "job_title": "Tandarts",
+    "specialisten_count": 4
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-maas-en-waal-ewijk-ewijk-3033575",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartscentrum-laren-laren-10024649",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-gouda-gouda-182063",
+    "job_title": "Tandarts",
+    "specialisten_count": 5
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-de-veluwsche-tandartsen-ermelo-183728",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-rotterdam-eudokiaplein-rotterdam-10022823",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-endo-en-zo-praktijk-voor-endodontologie-en-microchirurgie-amsterdam-3020941",
+    "job_title": "Tandarts",
+    "specialisten_count": 4
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-bilthoven-bilthoven-3033232",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-zuiderburen-leeuwarden-3042884",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-meutermans-tandheelkunde-hilvarenbeek-3039204",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-amersfoort-vathorst-amersfoort-10004685",
+    "job_title": "Tandarts",
+    "specialisten_count": 14
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-van-kempen-groningen-10025128",
+    "job_title": "Tandarts",
+    "specialisten_count": 5
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsengroep-zandpad-numansdorp-numansdorp-3033756",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-de-mondhoek-apeldoorn-187109",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-wij-in-waddinxveen-waddinxveen-3061170",
+    "job_title": "Tandarts",
+    "specialisten_count": 8
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-utrecht-oudenoord-utrecht-183966",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-amersfoort-hogekwartier-amersfoort-10020239",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-nederland-bergen-centre-ville-bergen-3042956",
+    "job_title": "Tandarts",
+    "specialisten_count": 4
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-de-zorgzame-tandarts-boxmeer-197860",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-tazi-amsterdam-3021018",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-omnios-ambulante-mondzorg-driebergen-rijsenburg-3053587",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkundig-centrum-noord-beveland-kortgene-131268",
+    "job_title": "Tandarts",
+    "specialisten_count": 5
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-lassus-tandartsen-lassusstraat-amsterdam-3042687",
+    "job_title": "Tandarts",
+    "specialisten_count": 11
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-lassus-tandartsen-oisterwijk-oisterwijk-10007465",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsenpraktijk-woenselse-heide-eindhoven-10005445",
+    "job_title": "Tandarts",
+    "specialisten_count": 7
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-jan-van-galen-amsterdam-179241",
+    "job_title": "Tandarts",
+    "specialisten_count": 10
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsenpraktijk-de-jong-assen-188320",
+    "job_title": "Tandarts",
+    "specialisten_count": 9
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-nieuwegein-nieuwegein-3036227",
+    "job_title": "Tandarts",
+    "specialisten_count": 10
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-makdo-mondzorgpraktijk-locatie-oostburg-oostburg-184180",
+    "job_title": "Tandarts",
+    "specialisten_count": 5
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandheelkunst-woerden-korenmolenlaan-woerden-219529",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-van-wely-groningen-188478",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsenpraktijk-reinieren-etten-leur-208370",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-mondzorgcentrum-atik-assen-3035288",
+    "job_title": "Tandarts",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartspraktijk-krans-groningen-236392",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-bakker-tandheelkunde-en-orthodontie-raalte-187813",
+    "job_title": "Tandarts",
+    "specialisten_count": 1
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-apeldoorn-zonnedauw-apeldoorn-208770",
+    "job_title": "Tandarts",
+    "specialisten_count": 6
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-harderwijk-hanzestad-harderwijk-3036238",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-tandartsenpraktijk-postelstraat-someren-209125",
+    "job_title": "Tandarts",
+    "specialisten_count": 4
   }
 ]
