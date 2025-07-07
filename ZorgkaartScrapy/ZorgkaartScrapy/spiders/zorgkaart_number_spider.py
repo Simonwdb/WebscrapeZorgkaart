@@ -14,7 +14,7 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
         super().__init__(*args, **kwargs)
         self.target = target
         self.job_title = job_title
-        self.limit = limit
+        self.limit = int(limit) if limit is not None else None
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -51,8 +51,12 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
 
         target_organisaties = [data for data in organisaties if data['organisatietype'] == self.target]
 
+        print(f"Length target organisation, without limit: {len(target_organisaties)}, chosen limit: {self.limit}")
+
         if self.limit is not None:
             target_organisaties = target_organisaties[:self.limit]
+
+        print(f"Length target organisation, with limit: {len(target_organisaties)}")
 
         for item in target_organisaties:
             url = item.get("url")
