@@ -20,9 +20,10 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
     }
 }
 
-    def __init__(self, target: str = "Tandartsenpraktijk", *args, **kwargs):
+    def __init__(self, target: str = "Tandartsenpraktijk", job_title: str = "Tandarts", *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.target = target
+        self.job_title = job_title
     
     def start_requests(self) -> Generator[scrapy.Request, None, None]:
         json_path = Path("data/zorgkaart_details_update.json")
@@ -55,20 +56,25 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
         organisatietype = response.meta['organisatietype']
 
         try:
+            count = None
             a_tags = response.css("div.filter__aside__item a")
-            if len(a_tags) > 1:
-                a_tag = a_tags[1]
-                count_text = a_tag.css("span.filter-radio__counter::text").get()
-                count = int(count_text.strip("() \n")) if count_text else None
+
+            for a_tag in a_tags:
+                a_tag_title = a_tag.css("::attr(title)").get(default="").strip().lower()
+                if a_tag_title == self.job_title.lower():
+                    count_text = a_tag.css("span.filter-radio__counter::text").get()
+                    count = int(count_text.strip("() \n")) if count_text else None
+                    break
             else:
                 count = None
 
-            message = f"✅ {base_url}/specialisten → {count if count is not None else 'no'} specialists found"
+            message = f"✅ {base_url}/specialisten → {count if count is not None else 'no'} specialists ({self.job_title}) found"
             print(message)
 
             yield {
                 "organisatietype": organisatietype,
                 "base_url": base_url,
+                "job_title": self.job_title,
                 "specialisten_count": count
             }
 
