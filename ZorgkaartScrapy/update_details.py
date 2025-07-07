@@ -4,18 +4,23 @@ from typing import Dict, List
 
 OUDE_FILE = Path("data/zorgkaart_details_update.json")  # bestaand bestand
 NIEUWE_FILE = Path("data/zorgkaart_details.json")        # output van spider 3
+COUNT_FILE = Path("data/zorgkaart_number.json")         # output van spider 4
 SAMENGEVOEGD_FILE = Path("data/zorgkaart_details_update.json")  # overschrijft oude bestand
 
-# Laad oude data
+# Laden oude data
 oude_data: Dict[str, Dict] = {}
 if OUDE_FILE.exists() and OUDE_FILE.stat().st_size > 0:
     with OUDE_FILE.open(encoding="utf-8") as f:
         for item in json.load(f):
             oude_data[item["url"]] = item
 
-# Laad nieuwe data
+# Laden nieuwe data
 with NIEUWE_FILE.open(encoding="utf-8") as f:
     nieuwe_data: List[Dict] = json.load(f)
+
+# Laden numbers data
+with COUNT_FILE.open(encoding='utf-8') as f:
+    number_data: List[Dict] = json.load(f)
 
 # Combineer
 samengevoegd: List[Dict] = []
@@ -36,6 +41,16 @@ nieuwe_urls = {item["url"] for item in nieuwe_data}
 for url, oud in oude_data.items():
     if url not in nieuwe_urls:
         samengevoegd.append(oud)
+
+number_lookup = {
+    (item['url'], item['organisatietype']): item for item in number_data
+}
+
+for item in samengevoegd:
+    key = (item['url'], item['organisatietype'])
+    match = number_lookup.get(key)
+    if match:
+        item['specialisten_count'] = match.get('specialisten_count')
 
 # Schrijf naar bestand
 with SAMENGEVOEGD_FILE.open("w", encoding="utf-8") as f:
