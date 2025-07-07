@@ -1,6 +1,5 @@
 import json
 import scrapy
-import datetime
 import numpy as np
 
 from pathlib import Path
@@ -17,7 +16,6 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
         if not json_path.exists():
             print("❌ Bestand niet gevonden:", json_path)
             return
-        
 
         with json_path.open(encoding="utf-8") as f:
             organisaties = json.load(f)
@@ -34,21 +32,23 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
                     callback=self.parse,
                     meta={"base_url": url}
                 )
-            break # for now, just only scrape the first item from target_organisaties
+            break  # For now, only scrape the first item
 
     def parse(self, response: scrapy.http.Response) -> Generator[Dict[str, Any], None, None]:
         base_url = response.meta['base_url']
 
         try:
-            a_tags = response.css("div.filter__asside__item a")
+            a_tags = response.css("div.filter__aside__item a")
             if len(a_tags) > 1:
                 a_tag = a_tags[1]
                 count_text = a_tag.css("span.filter-radio__counter::text").get()
                 count = int(count_text.strip("() \n")) if count_text else None
             else:
                 count = None
-            
-            print(f"✅ {base_url}/specialisten → {count if count is not None else "geen"} specialisten gevonden")
+
+            message = f"✅ {base_url}/specialisten → {count if count is not None else 'geen'} specialisten gevonden"
+            print(message)
+
             yield {
                 "base_url": base_url,
                 "specialisten_count": count
@@ -56,4 +56,3 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
 
         except Exception as e:
             print(f"⚠️ Fout bij parsen {response.url}: {e}")
-
