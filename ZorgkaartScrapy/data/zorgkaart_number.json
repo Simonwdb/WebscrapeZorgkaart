@@ -1,0 +1,14 @@
+[
+  {
+    "organisatietype": "Apotheek",
+    "base_url": "https://www.zorgkaartnederland.nl/zorginstelling/apotheek-service-apotheek-greidanus-harderwijk-172701",
+    "job_title": "Apotheker",
+    "specialisten_count": 2
+  },
+  {
+    "organisatietype": "Tandartsenpraktijk",
+    "base_url": "https://www.zorgkaartnederland.nl/zorginstelling/tandartsenpraktijk-dental-clinics-maastricht-heerderrein-maastricht-3020915",
+    "job_title": "Tandarts",
+    "specialisten_count": 3
+  }
+]
