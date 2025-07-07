@@ -15,6 +15,7 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
         self.target = target
         self.job_title = job_title
         self.limit = int(limit) if limit is not None else None
+        self.scraped_urls = set()
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -22,20 +23,17 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
 
         # Dynamische bestandsnaam genereren op basis van job_title
         safe_job_title = spider.job_title.lower().replace(" ", "_")
-        feed_path = f"data/zorgkaart_number_{safe_job_title}.json"
+        spider.output_path = Path(f"data/zorgkaart_number_{safe_job_title}.json")
 
-        # Override default feed settings
-        crawler.settings.set(
-            "FEEDS",
-            {
-                feed_path: {
-                    "format": "json",
-                    "encoding": "utf8",
-                    "overwrite": True
-                }
-            },
-            priority='spider'
-        )
+        # Lees bestaande data als die er is
+        if spider.output_path.exists():
+            try:
+                with spider.output_path.open(encoding="utf-8") as f:
+                    existing_data = json.load(f)
+                    spider.scraped_urls = {item["url"] for item in existing_data if "url" in item}
+                    print(f"⚠️ {len(spider.scraped_urls)} bestaande URL(s) gevonden in outputbestand")
+            except json.JSONDecodeError:
+                print("⚠️ Kon bestaande JSON niet parsen – bestand wordt genegeerd")
 
         return spider
    
@@ -51,12 +49,8 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
 
         target_organisaties = [data for data in organisaties if data['organisatietype'] == self.target]
 
-        print(f"Length target organisation, without limit: {len(target_organisaties)}, chosen limit: {self.limit}")
-
         if self.limit is not None:
             target_organisaties = target_organisaties[:self.limit]
-
-        print(f"Length target organisation, with limit: {len(target_organisaties)}")
 
         for item in target_organisaties:
             url = item.get("url")
@@ -91,12 +85,31 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
             message = f"✅ {base_url}/specialisten → {count if count is not None else 'no'} specialists ({self.job_title}) found"
             print(message)
 
-            yield {
+            item = {
                 "organisatietype": organisatietype,
                 "url": base_url,
                 "job_title": self.job_title,
                 "specialisten_count": count
             }
 
+            self._append_to_file(item)
+            yield item
+
         except Exception as e:
             print(f"⚠️ Fout bij parsen {response.url}: {e}")
+    
+
+    def _append_to_file(self, item: Dict[str, Any]) -> None:
+        """Voeg nieuw item toe aan bestaand bestand (append-manier)"""
+        existing = []
+        if self.output_path.exists():
+            try:
+                with self.output_path.open("r", encoding="utf-8") as f:
+                    existing = json.load(f)
+            except json.JSONDecodeError:
+                print("⚠️ Kon outputbestand niet inlezen – wordt overschreven")
+
+        existing.append(item)
+
+        with self.output_path.open("w", encoding="utf-8") as f:
+            json.dump(existing, f, indent=2, ensure_ascii=False)
