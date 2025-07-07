@@ -14,18 +14,30 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
         super().__init__(*args, **kwargs)
         self.target = target
         self.job_title = job_title
-        
-        safe_job_title = self.job_title.lower().replace(" ", "_")
-        self.custom_settings = {
-            "FEEDS": {
-                f"data/zorgkaart_number_{safe_job_title}.json": {
+
+    @classmethod
+    def from_crawler(cls, crawler, *args, **kwargs):
+        spider = super().from_crawler(crawler, *args, **kwargs)
+
+        # Dynamische bestandsnaam genereren op basis van job_title
+        safe_job_title = spider.job_title.lower().replace(" ", "_")
+        feed_path = f"data/zorgkaart_number_{safe_job_title}.json"
+
+        # Override default feed settings
+        crawler.settings.set(
+            "FEEDS",
+            {
+                feed_path: {
                     "format": "json",
                     "encoding": "utf8",
                     "overwrite": True
                 }
-            }
-        }
-    
+            },
+            priority='spider'
+        )
+
+        return spider
+   
     def start_requests(self) -> Generator[scrapy.Request, None, None]:
         json_path = Path("data/zorgkaart_details_update.json")
 
