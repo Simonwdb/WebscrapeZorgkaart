@@ -10,10 +10,11 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
     name = "zorgkaart_number"
     allowed_domains = ["zorgkaartnederland.nl"]
 
-    def __init__(self, target: str = "Tandartsenpraktijk", job_title: str = "Tandarts", *args, **kwargs):
+    def __init__(self, target: str = "Tandartsenpraktijk", job_title: str = "Tandarts", limit: int = None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.target = target
         self.job_title = job_title
+        self.limit = limit
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
@@ -50,6 +51,9 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
 
         target_organisaties = [data for data in organisaties if data['organisatietype'] == self.target]
 
+        if self.limit is not None:
+            target_organisaties = target_organisaties[:self.limit]
+
         for item in target_organisaties:
             url = item.get("url")
             if url:
@@ -62,7 +66,6 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
                         "base_url": url,
                         "organisatietype": self.target}
                 )
-            break  # For now, only scrape the first item
 
     def parse(self, response: scrapy.http.Response) -> Generator[Dict[str, Any], None, None]:
         base_url = response.meta['base_url']
@@ -86,7 +89,7 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
 
             yield {
                 "organisatietype": organisatietype,
-                "base_url": base_url,
+                "base": base_url,
                 "job_title": self.job_title,
                 "specialisten_count": count
             }
