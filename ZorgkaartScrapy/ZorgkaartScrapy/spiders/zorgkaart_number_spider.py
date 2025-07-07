@@ -93,7 +93,7 @@ class ZorgkaartNumberSpiderSpider(scrapy.Spider):
 
             yield {
                 "organisatietype": organisatietype,
-                "base": base_url,
+                "url": base_url,
                 "job_title": self.job_title,
                 "specialisten_count": count
             }
